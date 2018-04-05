@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
+import { observable } from 'mobx';
 
 import WithoutDecorator from './WithoutDecorator';
 import WithDecorator from './WithDecorator';
+
+const appState = observable({
+  count: 0,
+});
+
+appState.increment = function() {
+  this.count++;
+};
+
+appState.decrement = function() {
+  this.count--;
+};
 
 class App extends Component {
   render() {
@@ -13,7 +26,7 @@ class App extends Component {
         </div>
         <h1>With Decorator</h1>
         <div>
-          <WithDecorator />
+          <WithDecorator store={appState} />
         </div>
       </div>
     );

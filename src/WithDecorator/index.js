@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-import { observable } from 'mobx';
 import { observer } from 'mobx-react';
 
 @observer
 class WithDecorator extends Component {
-  @observable counter = 0;
-
   onIncrement = () => {
-    this.counter++;
+    this.props.store.increment();
   };
 
   onDecrement = () => {
-    this.counter--;
+    this.props.store.decrement();
   };
 
   render() {
+    console.log('hey');
     return (
       <div>
-        {this.counter}
+        {this.props.store.count}
 
         <button onClick={this.onIncrement} type="button">
           Increment
