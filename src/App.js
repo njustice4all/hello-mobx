@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { observable } from 'mobx';
+import Devtools from 'mobx-react-devtools';
 
 import WithoutDecorator from './WithoutDecorator';
 import WithDecorator from './WithDecorator';
@@ -20,6 +21,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Devtools />
         <h1>Without Decorator</h1>
         <div>
           <WithoutDecorator />
